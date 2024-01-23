@@ -19,7 +19,7 @@ public class ProductController {
     */
     // -> Constructor injection. This is more popular than field injection because of some points.
     @Autowired
-    public ProductController(@Qualifier("SelfProductService") ProductService productService) {
+    public ProductController(@Qualifier("FakeStoreProductService") ProductService productService) {
         this.productService = productService;
     }
 
@@ -28,9 +28,11 @@ public class ProductController {
         return productService.getProductById(id); // call method of service
     }
 
+    @PostMapping()
+    public GenericProductDto createProduct(@RequestBody GenericProductDto genericProductDto){
+        return productService.createProduct(genericProductDto);
 
-
-
+    }
 
 
 
@@ -45,6 +47,5 @@ public class ProductController {
     @GetMapping()
     public void getAllProduct(){}
     public void updateProductById(){}
-    @PostMapping()
-    public void createProduct(){}
+
 }
