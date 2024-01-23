@@ -40,7 +40,10 @@ public class ProductController {
         return productService.getAllProduct();
     }
 
-
+    @DeleteMapping("{id}")
+    public GenericProductDto deleteProductById(Long id){
+        return productService.deleteProduct(id);
+    }
 
 
 

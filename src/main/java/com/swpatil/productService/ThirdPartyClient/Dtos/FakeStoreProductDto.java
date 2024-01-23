@@ -1,4 +1,4 @@
-package com.swpatil.productService.dtos;
+package com.swpatil.productService.ThirdPartyClient.Dtos;
 
 import lombok.Getter;
 import lombok.Setter;

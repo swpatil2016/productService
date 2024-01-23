@@ -12,4 +12,7 @@ public interface ProductService {
     public GenericProductDto createProduct(GenericProductDto genericProductDto);
 
     public List<GenericProductDto> getAllProduct();
+
+    public GenericProductDto deleteProduct(Long ig); // return type might be anything here. because of fake store
+    //return the deleted object so we returning the GenericProductDto.
 }
