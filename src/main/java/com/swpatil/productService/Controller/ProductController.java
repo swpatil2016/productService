@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/products")
 public class ProductController {
@@ -28,10 +30,14 @@ public class ProductController {
         return productService.getProductById(id); // call method of service
     }
 
-    @PostMapping()
+    @PostMapping
     public GenericProductDto createProduct(@RequestBody GenericProductDto genericProductDto){
         return productService.createProduct(genericProductDto);
+    }
 
+    @GetMapping
+    public List<GenericProductDto> getAllProduct(){
+        return productService.getAllProduct();
     }
 
 
@@ -41,11 +47,6 @@ public class ProductController {
 
 
 
-
-
-
-    @GetMapping()
-    public void getAllProduct(){}
     public void updateProductById(){}
 
 }
