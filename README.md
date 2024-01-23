@@ -1,3 +1,7 @@
+
+Our API generally aggregator between a frontend and fake store.
+
+
 -> add File server.port=8080 in application.properties
 run application local host. 
 
