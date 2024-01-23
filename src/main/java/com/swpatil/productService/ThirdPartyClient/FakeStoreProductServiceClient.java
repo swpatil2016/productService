@@ -15,10 +15,8 @@ import java.util.List;
 
 @Component
 public class FakeStoreProductServiceClient {
-    @Value("${fakeStore.API.url}")
-    private String fakeStoreApiBaseUrl;
 
-    @Value("${product}")
+    private String fakeStoreApiBaseUrl;
     private String productUrl;
 
     private String productPath = "/product"; // we can also do this.
@@ -29,8 +27,12 @@ public class FakeStoreProductServiceClient {
 
     RestTemplateBuilder restTemplateBuilder;
     @Autowired
-    public FakeStoreProductServiceClient(RestTemplateBuilder restTemplateBuilder) {
+    public FakeStoreProductServiceClient(RestTemplateBuilder restTemplateBuilder,
+                                         @Value("${fakeStore.API.url}") String fakeStoreApiBaseUrl,
+                                         @Value("${product}") String productUrl) {
         this.restTemplateBuilder = restTemplateBuilder;
+        this.fakeStoreApiBaseUrl = fakeStoreApiBaseUrl;
+        this.productUrl = productUrl;
     }
 
     public FakeStoreProductDto getProductById(Long id) {
