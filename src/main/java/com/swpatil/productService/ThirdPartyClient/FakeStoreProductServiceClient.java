@@ -3,6 +3,7 @@ package com.swpatil.productService.ThirdPartyClient;
 import com.swpatil.productService.ThirdPartyClient.Dtos.FakeStoreProductDto;
 import com.swpatil.productService.dtos.GenericProductDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +15,19 @@ import java.util.List;
 
 @Component
 public class FakeStoreProductServiceClient {
-    RestTemplateBuilder restTemplateBuilder;
-    private String url = "https://fakestoreapi.com/products/{id}";
-    private String productRequestUrl = "https://fakestoreapi.com/products";
+    @Value("${fakeStore.API.url}")
+    private String fakeStoreApiBaseUrl;
 
+    @Value("${product}")
+    private String productUrl;
+
+    private String productPath = "/product"; // we can also do this.
+
+
+    private String url = fakeStoreApiBaseUrl + productPath + "{id}";
+    private String productRequestUrl = fakeStoreApiBaseUrl + productPath;
+
+    RestTemplateBuilder restTemplateBuilder;
     @Autowired
     public FakeStoreProductServiceClient(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplateBuilder = restTemplateBuilder;
