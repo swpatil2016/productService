@@ -18,3 +18,14 @@ java object.
  2}Convert java object in JSON
  3}Convert fake store response(JSON) in java object.
 
+->@Value
+@Value("${fakeStore.API.url})
+private String fakeStoreApiBaseUrl;
+
+@Value("product")
+private String productUrl;
+
+we can also do this, but it will give null value in Strings.
+To avoid null we pall it in Constructor.
+The reason might be @Value call after an object is created before that null value 
+store in Strings.
